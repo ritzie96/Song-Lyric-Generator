@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+
+    <title>Song generator</title>
+  </head>
+  <body>
+    <img src="{{ url_for('static', filename='loading.gif') }}" id="loading-indicator" style="display:none"/>
+    <div class="container main">
+    <div class="row">
+        <div class="col-6">
+            <h1>Song generator</h1>
+        </div>
+        <div class="col-6">
+        </div>
+    </div>
+    <form class="" method="POST" action="{{ url_for('search') }}">
+    <div class="row">
+        <div class="col-6 left-side pad-top">
+            <label class="select-inline" for="genre_select"><h3>Select genre:</h3></label>
+            <select id="genre_select" name="comp_select" class="custom-select d-block w-100">
+              {% for o in data %}
+              <option value="{{ o.name }}">{{ o.name }}</option>
+              {% endfor %}
+            </select>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 left-side">
+            <h3>Input lyrics:</h3>
+        </div>
+        <div class="col-6 right-side">
+            <h3>Result:</h3>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 left-side">
+          <textarea class="form-control he" id="Query" name="Query" placeholder="What your song about?">{{query}}</textarea>
+        </div>
+        <div class="col-6 display-normal right-side">
+{{ result }}
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-6 top-align left-side pad-bottom">
+            <button type="submit" class="btn btn-default" id="submit-btn" onclick="$('#loading-indicator').show();">Go</button>
+        </div>
+        <div class="col-6 top-align right-side pad-bottom">
+        </div>
+    </div>
+    </form>
+    </div>
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>
+
+
+<!--
+<!DOCTYPE html>
+<html>
+<title>Song_Generator</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body class="w3-black">
+
+<div class="w3-display-container">
+    <img src="/static/page.jpg"  style="width:100%;height:400px">
+  <div class="w3-display-middle w3-large">
+    <h1 class="w3-jumbo w3-text-deep-purple w3-wide"><b>Song_lyric_Generator</b></h1>
+  </div>
+   <div class="w3-display-bottomright w3-container">
+
+   </div>
+</div>
+<form class="form-inline" method="POST" action="{{ url_for('search') }}">
+<div class="w3-container w3-deep-purple w3-large w3-padding-16" style="margin-left:10%">
+      <label for="Query">Search Query:</label><br />
+  <input type="text" class="form-control" id="Query" name="Query" placeholder="What your song about?"  size="35" ><br /><br />
+    <span class="input-group-addon">Genre</span>
+    <select name="comp_select" class="selectpicker form-control">
+      {% for o in data %}
+      <option value="{{ o.name }}">{{ o.name }}</option>
+      {% endfor %}
+    </select> </br><br />
+ <button type="submit" class="btn btn-default">Go</button>
+</div>
+
+<div style="width:75%">
+  <div class="w3-container w3-blue w3-large w3-padding-16">
+    <label for="Res">Result:</label><br />
+    <textarea rows="4" cols="65">{{ result }}</textarea><br />
+    <label for="Res">Orignial song:</label><br />
+    <textarea rows="4" cols="65">{{ query }}</textarea><br />
+  </div>
+  <div class="w3-display-container">
+  </div>
+</div>
+</form>
+</body>
+</html>
+-->
